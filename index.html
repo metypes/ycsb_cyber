@@ -1,0 +1,676 @@
+
+<html>
+<head>
+<title>YCSB Testing Results</title>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script> 
+</head>
+<style>
+.chart {
+	width: 47%; 
+	height: 400px; 
+	margin: 5px 0 10px 10px;
+	float: left;
+}
+h1 {
+	text-align: center;
+}
+p,h2 {
+	display: table;
+	width: 100%;
+	margin: 3px;
+}
+</style>
+<body>
+<h1>YCSB Testing Results</h1>
+ <h2></h2>
+<div id="-INSERT" class=chart></div>
+<script>
+$(document).ready(function() {  
+   var chart = {
+      type: 'spline'      
+   }; 
+   var title = {
+      text: ' INSERT'
+   };
+   var subtitle = {
+      text: 'Unknown workload name'
+   };
+
+   var yAxis = {
+      title: {
+         text: 'Latency (Milliseconds)'
+      },
+      labels: {
+         formatter: function () {
+            return this.value;
+         }
+      },
+      lineWidth: 2
+   };
+   var tooltip = {
+      crosshairs: true,
+      shared: true
+   };
+   var plotOptions = {
+      spline: {
+         marker: {
+            radius: 4,
+            lineColor: '#666666',
+            lineWidth: 1
+         }
+      }
+   };
+   var xAxis = {
+      title: {
+         text: 'Throughput'
+      },
+      categories: []
+   };
+   var series= [ {
+         name: 'base_load.result',
+         marker: {
+            symbol: 'circle'
+         },
+         data: [0.162],
+         
+      }, {
+         name: 'base_run.result',
+         marker: {
+            symbol: 'square'
+         },
+         data: [2.028],
+         
+      }, {
+         name: 'cassandra_load.result',
+         marker: {
+            symbol: 'diamond'
+         },
+         data: [7.980],
+         
+      }, {
+         name: 'hbase_load.result',
+         marker: {
+            symbol: 'triangle'
+         },
+         data: [1.793],
+         
+      }, {
+         name: 'hbase_run.result',
+         marker: {
+            symbol: 'triangle-down'
+         },
+         data: [45.058],
+         
+      }, {
+         name: 'mongo_ec2_load.result',
+         marker: {
+            symbol: ''
+         },
+         data: [9.988],
+         
+      }, {
+         name: 'mongo_ecs_load.result',
+         marker: {
+            symbol: ''
+         },
+         data: [10.122],
+         
+      }, {
+         name: 'mongo_fargate_load.result',
+         marker: {
+            symbol: ''
+         },
+         data: [10.000],
+         
+      },
+   ];
+   var json = {};
+   json.chart = chart;
+   json.title = title;
+   json.subtitle = subtitle;
+   json.tooltip = tooltip;
+   json.xAxis = xAxis;
+   json.yAxis = yAxis;  
+   json.series = series;
+   json.plotOptions = plotOptions;
+   $('#-INSERT').highcharts(json);
+  
+});
+</script>
+ 
+<div id="-READ" class=chart></div>
+<script>
+$(document).ready(function() {  
+   var chart = {
+      type: 'spline'      
+   }; 
+   var title = {
+      text: ' READ'
+   };
+   var subtitle = {
+      text: 'Unknown workload name'
+   };
+
+   var yAxis = {
+      title: {
+         text: 'Latency (Milliseconds)'
+      },
+      labels: {
+         formatter: function () {
+            return this.value;
+         }
+      },
+      lineWidth: 2
+   };
+   var tooltip = {
+      crosshairs: true,
+      shared: true
+   };
+   var plotOptions = {
+      spline: {
+         marker: {
+            radius: 4,
+            lineColor: '#666666',
+            lineWidth: 1
+         }
+      }
+   };
+   var xAxis = {
+      title: {
+         text: 'Throughput'
+      },
+      categories: []
+   };
+   var series= [ {
+         name: 'base_run.result',
+         marker: {
+            symbol: 'square'
+         },
+         data: [1.282,1.317,0.754,1.493,0.371],
+         
+      }, {
+         name: 'hbase_run.result',
+         marker: {
+            symbol: 'triangle-down'
+         },
+         data: [6.953,21.888,12.751,20.149,2.080],
+         
+      }, {
+         name: 'mongo_ec2_run.result',
+         marker: {
+            symbol: ''
+         },
+         data: [603.200,788.404,219.333,173.848],
+         
+      }, {
+         name: 'mongo_ecs_run.result',
+         marker: {
+            symbol: ''
+         },
+         data: [826.872,557.350,166.864,167.871,159.968],
+         
+      }, {
+         name: 'mongo_fargate_run.result',
+         marker: {
+            symbol: ''
+         },
+         data: [562.362,633.369,766.337,158.012,826.872],
+         
+      },
+   ];
+   var json = {};
+   json.chart = chart;
+   json.title = title;
+   json.subtitle = subtitle;
+   json.tooltip = tooltip;
+   json.xAxis = xAxis;
+   json.yAxis = yAxis;  
+   json.series = series;
+   json.plotOptions = plotOptions;
+   $('#-READ').highcharts(json);
+  
+});
+</script>
+ 
+<div id="-READ-FAILED" class=chart></div>
+<script>
+$(document).ready(function() {  
+   var chart = {
+      type: 'spline'      
+   }; 
+   var title = {
+      text: ' READ-FAILED'
+   };
+   var subtitle = {
+      text: 'Unknown workload name'
+   };
+
+   var yAxis = {
+      title: {
+         text: 'Operations'
+      },
+      labels: {
+         formatter: function () {
+            return this.value;
+         }
+      },
+      lineWidth: 2
+   };
+   var tooltip = {
+      crosshairs: true,
+      shared: true
+   };
+   var plotOptions = {
+      spline: {
+         marker: {
+            radius: 4,
+            lineColor: '#666666',
+            lineWidth: 1
+         }
+      }
+   };
+   var xAxis = {
+      title: {
+         text: 'Throughput'
+      },
+      categories: []
+   };
+   var series= [ {
+         name: 'hbase_run.result',
+         marker: {
+            symbol: 'triangle-down'
+         },
+         data: [454,799,803,822,740],
+         color: '#FF9800'
+      },
+   ];
+   var json = {};
+   json.chart = chart;
+   json.title = title;
+   json.subtitle = subtitle;
+   json.tooltip = tooltip;
+   json.xAxis = xAxis;
+   json.yAxis = yAxis;  
+   json.series = series;
+   json.plotOptions = plotOptions;
+   $('#-READ-FAILED').highcharts(json);
+  
+});
+</script>
+ 
+<div id="-UPDATE" class=chart></div>
+<script>
+$(document).ready(function() {  
+   var chart = {
+      type: 'spline'      
+   }; 
+   var title = {
+      text: ' UPDATE'
+   };
+   var subtitle = {
+      text: 'Unknown workload name'
+   };
+
+   var yAxis = {
+      title: {
+         text: 'Latency (Milliseconds)'
+      },
+      labels: {
+         formatter: function () {
+            return this.value;
+         }
+      },
+      lineWidth: 2
+   };
+   var tooltip = {
+      crosshairs: true,
+      shared: true
+   };
+   var plotOptions = {
+      spline: {
+         marker: {
+            radius: 4,
+            lineColor: '#666666',
+            lineWidth: 1
+         }
+      }
+   };
+   var xAxis = {
+      title: {
+         text: 'Throughput'
+      },
+      categories: []
+   };
+   var series= [ {
+         name: 'base_run.result',
+         marker: {
+            symbol: 'square'
+         },
+         data: [1.200,2.249,0.537],
+         
+      }, {
+         name: 'hbase_run.result',
+         marker: {
+            symbol: 'triangle-down'
+         },
+         data: [57.482,36.764,33.171],
+         
+      }, {
+         name: 'mongo_ec2_run.result',
+         marker: {
+            symbol: ''
+         },
+         data: [635.149,542.062,106.008],
+         
+      }, {
+         name: 'mongo_ecs_run.result',
+         marker: {
+            symbol: ''
+         },
+         data: [771.267,552.814,269.621,131.572,137.089],
+         
+      }, {
+         name: 'mongo_fargate_run.result',
+         marker: {
+            symbol: ''
+         },
+         data: [751.307,1028.585,1014.340,168.913,771.267],
+         
+      },
+   ];
+   var json = {};
+   json.chart = chart;
+   json.title = title;
+   json.subtitle = subtitle;
+   json.tooltip = tooltip;
+   json.xAxis = xAxis;
+   json.yAxis = yAxis;  
+   json.series = series;
+   json.plotOptions = plotOptions;
+   $('#-UPDATE').highcharts(json);
+  
+});
+</script>
+ 
+<div id="-OVERALL-RunTime" class=chart></div>
+<script>
+$(document).ready(function() {  
+   var chart = {
+      type: 'spline'      
+   }; 
+   var title = {
+      text: ' OVERALL-RunTime'
+   };
+   var subtitle = {
+      text: 'Unknown workload name'
+   };
+
+   var yAxis = {
+      title: {
+         text: 'RunTime (Seconds)'
+      },
+      labels: {
+         formatter: function () {
+            return this.value;
+         }
+      },
+      lineWidth: 2
+   };
+   var tooltip = {
+      crosshairs: true,
+      shared: true
+   };
+   var plotOptions = {
+      spline: {
+         marker: {
+            radius: 4,
+            lineColor: '#666666',
+            lineWidth: 1
+         }
+      }
+   };
+   var xAxis = {
+      title: {
+         text: 'Throughput'
+      },
+      categories: []
+   };
+   var series= [ {
+         name: 'base_load.result',
+         marker: {
+            symbol: 'circle'
+         },
+         data: [0.197],
+         
+      }, {
+         name: 'base_run.result',
+         marker: {
+            symbol: 'square'
+         },
+         data: [0.103,0.109,0.079,0.084,0.098],
+         
+      }, {
+         name: 'cassandra_load.result',
+         marker: {
+            symbol: 'diamond'
+         },
+         data: [1.510],
+         
+      }, {
+         name: 'hbase_load.result',
+         marker: {
+            symbol: 'triangle'
+         },
+         data: [2.818],
+         
+      }, {
+         name: 'hbase_run.result',
+         marker: {
+            symbol: 'triangle-down'
+         },
+         data: [1.683,1.611,1.196,1.441,1.431],
+         
+      }, {
+         name: 'mongo_ec2_load.result',
+         marker: {
+            symbol: ''
+         },
+         data: [51.279],
+         
+      }, {
+         name: 'mongo_ec2_run.result',
+         marker: {
+            symbol: ''
+         },
+         data: [7.040,8.540,5.005,4.209],
+         
+      }, {
+         name: 'mongo_ecs_load.result',
+         marker: {
+            symbol: ''
+         },
+         data: [52.428],
+         
+      }, {
+         name: 'mongo_ecs_run.result',
+         marker: {
+            symbol: ''
+         },
+         data: [8.667,6.415,4.071,3.944,3.870],
+         
+      }, {
+         name: 'mongo_fargate_load.result',
+         marker: {
+            symbol: ''
+         },
+         data: [51.389],
+         
+      }, {
+         name: 'mongo_fargate_run.result',
+         marker: {
+            symbol: ''
+         },
+         data: [7.288,7.317,8.637,3.854,8.667],
+         
+      },
+   ];
+   var json = {};
+   json.chart = chart;
+   json.title = title;
+   json.subtitle = subtitle;
+   json.tooltip = tooltip;
+   json.xAxis = xAxis;
+   json.yAxis = yAxis;  
+   json.series = series;
+   json.plotOptions = plotOptions;
+   $('#-OVERALL-RunTime').highcharts(json);
+  
+});
+</script>
+ 
+<div id="-OVERALL-Throughput" class=chart></div>
+<script>
+$(document).ready(function() {  
+   var chart = {
+      type: 'spline'      
+   }; 
+   var title = {
+      text: ' OVERALL-Throughput'
+   };
+   var subtitle = {
+      text: 'Unknown workload name'
+   };
+
+   var yAxis = {
+      title: {
+         text: 'Throughput (ops/sec)'
+      },
+      labels: {
+         formatter: function () {
+            return this.value;
+         }
+      },
+      lineWidth: 2
+   };
+   var tooltip = {
+      crosshairs: true,
+      shared: true
+   };
+   var plotOptions = {
+      spline: {
+         marker: {
+            radius: 4,
+            lineColor: '#666666',
+            lineWidth: 1
+         }
+      }
+   };
+   var xAxis = {
+      title: {
+         text: 'Throughput'
+      },
+      categories: []
+   };
+   var series= [ {
+         name: 'base_load.result',
+         marker: {
+            symbol: 'circle'
+         },
+         data: [5076.1421319796955],
+         
+      }, {
+         name: 'base_run.result',
+         marker: {
+            symbol: 'square'
+         },
+         data: [9708.73786407767,9174.311926605504,12658.227848101265,11904.761904761905,10204.081632653062],
+         
+      }, {
+         name: 'cassandra_load.result',
+         marker: {
+            symbol: 'diamond'
+         },
+         data: [756.3025210084033],
+         
+      }, {
+         name: 'hbase_load.result',
+         marker: {
+            symbol: 'triangle'
+         },
+         data: [354.86160397444996],
+         
+      }, {
+         name: 'hbase_run.result',
+         marker: {
+            symbol: 'triangle-down'
+         },
+         data: [594.1770647653001,620.7324643078833,836.1204013377926,693.9625260235947,698.8120195667366],
+         
+      }, {
+         name: 'mongo_ec2_load.result',
+         marker: {
+            symbol: ''
+         },
+         data: [9750.580159519492],
+         
+      }, {
+         name: 'mongo_ec2_run.result',
+         marker: {
+            symbol: ''
+         },
+         data: [142.04545454545453,117.096018735363,199.8001998001998,237.58612497030174],
+         
+      }, {
+         name: 'mongo_ecs_load.result',
+         marker: {
+            symbol: ''
+         },
+         data: [9536.888685435264],
+         
+      }, {
+         name: 'mongo_ecs_run.result',
+         marker: {
+            symbol: ''
+         },
+         data: [115.38017768547364,155.8846453624318,245.63989191844755,253.5496957403651,258.3979328165375],
+         
+      }, {
+         name: 'mongo_fargate_load.result',
+         marker: {
+            symbol: ''
+         },
+         data: [9729.708692521746],
+         
+      }, {
+         name: 'mongo_fargate_run.result',
+         marker: {
+            symbol: ''
+         },
+         data: [137.211855104281,136.66803334700015,115.7809424568716,259.4706798131811,115.38017768547364],
+         
+      },
+   ];
+   var json = {};
+   json.chart = chart;
+   json.title = title;
+   json.subtitle = subtitle;
+   json.tooltip = tooltip;
+   json.xAxis = xAxis;
+   json.yAxis = yAxis;  
+   json.series = series;
+   json.plotOptions = plotOptions;
+   $('#-OVERALL-Throughput').highcharts(json);
+  
+});
+</script>
+
+<p>
+<hr>
+Reference results: /home/mrd/Documents/tutorial_1_ML/ML/CA3/YCSB_Results
+<br>
+Last updated at 2022-05-25_02:59:32.
+</p>
+</body>
+</html>
+
